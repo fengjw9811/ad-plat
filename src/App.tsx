@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
+import { RouteComponentProps } from 'react-router'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface Props extends RouteComponentProps { }
+export default class App extends Component<Props> {
+    handleRoute = () => {
+        const { location, history } = this.props
+        const { pathname } = location
+
+        //自动去首页
+        if (pathname === '/') {
+            history.push('index')
+            return false
+        }
+        return true
+    }
+    render() {
+        const { children } = this.props
+        return (
+            <div>
+                {
+                    this.handleRoute() ? children : 'other'
+                }
+            </div>
+        )
+    }
 }
-
-export default App;

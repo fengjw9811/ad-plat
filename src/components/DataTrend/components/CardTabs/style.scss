@@ -1,11 +1,11 @@
 .cardtabs-component-box {
     display: flex;
     justify-content: space-between;
-
     :last-child {
         margin-right: 0px;
     }
 }
+
 .carditem-component-box {
     display: flex;
     background: #f7f8f8;

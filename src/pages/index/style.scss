@@ -4,9 +4,9 @@
         height: 100px;
     }
     .content-box {
-        width: 1220px;
+        width: 1250px;
         margin: 0 auto;
-        margin-top: 20px;
+        margin-top: -20px;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
@@ -16,10 +16,21 @@
             .chart-area {
                 height: 440px;
                 margin-top: 20px;
+                .text-info-box{
+                    border-top-left-radius: 8px;
+                    border-top-right-radius: 8px;
+                    background-color: #fff;
+                    padding: 5px 10px 0 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    .text-style{
+                        font-size: 20px;
+                    }
+                }
             }
             .promotion-card-area {
                 height: 166px;
-                margin-top: 20px;
+                margin-top: 50px;
             }
             .product-card-area{
                 height: 345px;

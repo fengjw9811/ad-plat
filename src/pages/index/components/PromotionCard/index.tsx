@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import ProCardItem from './ProCardItem'
 import './style.scss'
 
+interface IProps {
+    history?: any;
+}
+
 const promotionData = [
     {
         name: '搜索推广',
@@ -36,7 +40,14 @@ const promotionData = [
         type: 2,
     },
 ];
-export default class PromotionCard extends Component {
+
+export default class PromotionCard extends Component<IProps> {
+    state = {}
+
+    handleEnter = () => {
+        const { history } = this.props
+        history.push('/search')
+    }
     render() {
         return (
             <div className='promotion-card-component-box'>
@@ -50,6 +61,7 @@ export default class PromotionCard extends Component {
                             btnStatus={promotionItem.btnStatus}
                             cost={promotionItem.cost}
                             budget={promotionItem.budget}
+                            onEnter={this.handleEnter}
                         />
                     ))
                 }

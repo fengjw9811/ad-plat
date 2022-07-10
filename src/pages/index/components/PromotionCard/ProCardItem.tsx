@@ -9,7 +9,8 @@ interface IProps {
     type: number,
     btnStatus: boolean,
     cost?: number,
-    budget?: number
+    budget?: number,
+    onEnter?: () => void
 }
 interface IStates {
     editModalShow: boolean;
@@ -39,7 +40,10 @@ export default class ProCardItem extends Component<IProps, IStates> {
         });
     }
     handleClick = () => {
-
+        const { onEnter } = this.props
+        if (onEnter) {
+            onEnter()
+        }
     }
 
     handleRadioChange = (optionValue: number) => {

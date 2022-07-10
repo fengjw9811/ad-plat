@@ -3,52 +3,55 @@ import CardTabs from './components/CardTabs'
 import LineChart from './components/LineChart'
 import { CardItemType } from './components/CardTabs/types'
 import { cloneDeep } from 'lodash'
-import { Select, DatePicker } from 'antd'
 //引入图片
-import icon1Selected from '../../../../assets/imgs/card-icon1-selected.png'
-import icon1 from '../../../../assets/imgs/card-icon1.png'
-import icon2Selected from '../../../../assets/imgs/card-icon2-selected.png'
-import icon2 from '../../../../assets/imgs/card-icon2.png'
-import icon3Selected from '../../../../assets/imgs/card-icon3-selected.png'
-import icon3 from '../../../../assets/imgs/card-icon3.png'
+import icon1Selected from '../../assets/imgs/card-icon1-selected.png'
+import icon1 from '../../assets/imgs/card-icon1.png'
+import icon2Selected from '../../assets/imgs/card-icon2-selected.png'
+import icon2 from '../../assets/imgs/card-icon2.png'
+import icon3Selected from '../../assets/imgs/card-icon3-selected.png'
+import icon3 from '../../assets/imgs/card-icon3.png'
 
 import './style.scss'
 
-interface IProps { }
+interface IProps {
+    cardData?: CardItemType[]
+}
 
 interface IStates { }
 
+const defaultCardData = [
+    {
+        id: '1',
+        name: '消费（元）',
+        value: 2000,
+        percent: '',
+        icon: icon1,
+        iconSelected: icon1Selected,
+        isSelected: true,
+    },
+    {
+        id: '2',
+        name: '展现（次）',
+        value: 5988,
+        percent: 88.9,
+        icon: icon2,
+        iconSelected: icon2Selected,
+        isSelected: false
+    },
+    {
+        id: '3',
+        name: '点击（次）',
+        value: 199,
+        percent: 12.6,
+        icon: icon3,
+        iconSelected: icon3Selected,
+        isSelected: false,
+    }
+]
+
 export default class Chart extends Component<IProps, IStates> {
     state = {
-        cardData: [
-            {
-                id: '1',
-                name: '消费（元）',
-                value: 2000,
-                percent: 28,
-                icon: icon1,
-                iconSelected: icon1Selected,
-                isSelected: true,
-            },
-            {
-                id: '2',
-                name: '展现（次）',
-                value: 5988,
-                percent: 88.9,
-                icon: icon2,
-                iconSelected: icon2Selected,
-                isSelected: false
-            },
-            {
-                id: '3',
-                name: '点击（次）',
-                value: 199,
-                percent: 12.6,
-                icon: icon3,
-                iconSelected: icon3Selected,
-                isSelected: false,
-            }
-        ],
+        cardData: this.props.cardData || defaultCardData,
         chartData: [
             {
                 year: '2011',
@@ -112,25 +115,10 @@ export default class Chart extends Component<IProps, IStates> {
     handleDateChange = () => {
 
     }
-    handleSelectChange = () => {
-
-    }
     render() {
         const { cardData, chartData } = this.state
-        const { Option } = Select
         return (
             <div className='data-trend-component-box'>
-                <div className='text-info-box'>
-                    <div className='text-style'>数据趋势</div>
-                    <div className='select-box'>
-                        <Select defaultValue="全部推广产品" style={{ fontSize: '12px', width: 120, marginRight: 10 }} onChange={this.handleSelectChange}>
-                            <Option value="jack">Jack</Option>
-                            <Option value="lucy">Lucy</Option>
-                            <Option value="Yiminghe">yiminghe</Option>
-                        </Select>
-                        <DatePicker onChange={this.handleDateChange} />
-                    </div>
-                </div>
                 <div className='card-tabs-box'>
                     <CardTabs
                         cardData={cardData}

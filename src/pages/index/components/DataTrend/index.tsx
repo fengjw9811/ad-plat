@@ -3,6 +3,7 @@ import CardTabs from './components/CardTabs'
 import LineChart from './components/LineChart'
 import { CardItemType } from './components/CardTabs/types'
 import { cloneDeep } from 'lodash'
+import { Select, DatePicker } from 'antd'
 //引入图片
 import icon1Selected from '../../../../assets/imgs/card-icon1-selected.png'
 import icon1 from '../../../../assets/imgs/card-icon1.png'
@@ -108,10 +109,28 @@ export default class Chart extends Component<IProps, IStates> {
             chartData: newChartData
         })
     }
+    handleDateChange = () => {
+
+    }
+    handleSelectChange = () => {
+
+    }
     render() {
         const { cardData, chartData } = this.state
+        const { Option } = Select
         return (
             <div className='data-trend-component-box'>
+                <div className='text-info-box'>
+                    <div className='text-style'>数据趋势</div>
+                    <div className='select-box'>
+                        <Select defaultValue="全部推广产品" style={{ fontSize: '12px', width: 120, marginRight: 10 }} onChange={this.handleSelectChange}>
+                            <Option value="jack">Jack</Option>
+                            <Option value="lucy">Lucy</Option>
+                            <Option value="Yiminghe">yiminghe</Option>
+                        </Select>
+                        <DatePicker onChange={this.handleDateChange} />
+                    </div>
+                </div>
                 <div className='card-tabs-box'>
                     <CardTabs
                         cardData={cardData}
